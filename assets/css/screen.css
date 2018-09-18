@@ -116,6 +116,7 @@ body {
     color: #fff;
     background: color(var(--darkgrey) l(-5%)) no-repeat center center;
     background-size: cover;
+    min-height: 600px;
 }
 
 .site-header:before {
@@ -670,6 +671,7 @@ The first (most recent) post in the list is styled to be bigger than the others 
 .post-full {
     position: relative;
     z-index: 50;
+    margin-top: -3vw;
 }
 /* ^ Required to make .post-full-content:before/after z-index stacking work */
 
@@ -1917,6 +1919,66 @@ Usage (In Ghost editor):
 .kg-gallery-image:not(:first-of-type) {
     margin: 0 0 0 0.75em;
 }
+
+/* 7.7 aries style*/
+/* ---------------------------------------------------------- */
+.post-nav-container{
+    margin: 3vw auto;
+}
+
+.post-nav-container .back-home{
+    font-size: 1.2rem;
+    line-height: 2.4rem;
+    padding: .5rem 2.5rem;
+    opacity: .8;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 0;
+    background: none;
+}
+
+.post-info-container{
+    margin: 8vw auto;
+}
+
+.post-page-title{
+    font-size: 4.2rem;
+    font-weight: lighter;
+    line-height: 4.8rem;
+    text-align: left;
+    color: white;
+}
+
+.post-page-time{
+    line-height: 2rem;
+    display: inline-block;
+    float: left;
+    height: 2rem;
+    text-align: left;
+}
+
+.post-page-tags{
+    display: block;
+    clear: both;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.post-page-tags a:first-child{
+    margin-left: 0;
+}
+
+.post-page-tags a{
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    display: inline-block;
+    margin: .3rem .6rem .3rem 0;
+    padding: 0 1rem;
+    color: #fff;
+    border-radius: .3rem;
+    background: rgba(255,255,255,.3);
+}
+
 
 /* 8. Author Template
 /* ---------------------------------------------------------- */
