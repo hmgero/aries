@@ -28,35 +28,12 @@ into the {body} of the default.hbs template --}}
 
         <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
 
-            {{!-- <header class="post-full-header">
-                <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
-                    {{#primary_tag}}
-                        <span class="date-divider">/</span> <a href="{{url}}">{{name}}</a>
-                    {{/primary_tag}}
-                </section>
-                <h1 class="post-full-title">{{title}}</h1>
-            </header> --}}
-
-            {{!-- {{#if feature_image}}
-            <figure class="post-full-image" style="background-image: url({{feature_image}})">
-            </figure>
-            {{/if}} --}}
-
             <section class="post-full-content">
                 <div class="post-content">
                     {{content}}
                 </div>
             </section>
 
-            {{!-- Email subscribe form at the bottom of the page --}}
-            {{#if @labs.subscribers}}
-            <section class="subscribe-form">
-                <h3 class="subscribe-form-title">Subscribe to {{@blog.title}}</h3>
-                <p>Get the latest posts delivered right to your inbox</p>
-                {{subscribe_form placeholder="youremail@example.com"}}
-            </section>
-            {{/if}}
 
             <footer class="post-full-footer">
 
@@ -65,11 +42,33 @@ into the {body} of the default.hbs template --}}
                 from includes/byline-multiple.hbs, otherwise, we just use the
                 default byline. --}}
 
-                {{#has author="count:>1"}}
-                    {{> "byline-multiple"}}
-                {{else}}
-                    {{> "byline-single"}}
-                {{/has}}
+                {{#author}}
+                <section class="author">
+                 {{#if profile_image}}
+            <figure class="author-image">
+                <a class="img" href="javascript:;" style="background-image: url('{{profile_image}}')"><span class="hide">{{name}}'s Picture</span></a>
+            </figure>
+              {{/if}}
+
+            <section class="author-detail">
+                <a href="javascript:;">{{name}}</a>
+            {{#if bio}}
+                 <p>{{bio}}</p>
+            {{else}}
+                <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+            {{/if}}
+                <div class="author-meta">
+                     {{#if location}}
+                    <span class="author-location">{{location}}</span>
+                    {{/if}}
+                     {{#if website}}
+                    <span class="author-link"><a href="{{website}}">{{website}}</a></span>
+                    {{/if}}
+                </div>
+
+            </section>
+        </section>
+        {{/author}}
 
             </footer>
 
