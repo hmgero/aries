@@ -3,49 +3,33 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
-<header class="site-header outer">
-    <div class="inner">
-        {{> "site-nav"}}
-    </div>
-</header>
-
 {{!-- Everything inside the #post tags pulls data from the post --}}
 {{#post}}
 
+<header class="site-header" {{#if feature_image}} style="background-image: url({{feature_image}})" {{else}} style="background-image: url({{asset "img/default.jpg"}})" {{/if}}>
+    <div class="inner">
+        <div class="post-nav-container">
+            <a href="{{@blog.url}}" class="back-home">Home</a>
+        </div>
+        <div class="post-info-container">
+            <h2 class="post-page-title">{{title}}</h2>
+            <time class="post-page-time" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+            <div class="post-page-tags">
+                {{tags separator=" "}}
+            </div>
+        </div>
+    </div>
+</header>
+
+
 <main id="site-main" class="site-main outer">
     <div class="inner">
-
         <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
-
-            <header class="post-full-header">
-                <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
-                    {{#primary_tag}}
-                        <span class="date-divider">/</span> <a href="{{url}}">{{name}}</a>
-                    {{/primary_tag}}
-                </section>
-                <h1 class="post-full-title">{{title}}</h1>
-            </header>
-
-            {{#if feature_image}}
-            <figure class="post-full-image" style="background-image: url({{feature_image}})">
-            </figure>
-            {{/if}}
-
             <section class="post-full-content">
                 <div class="post-content">
                     {{content}}
                 </div>
             </section>
-
-            {{!-- Email subscribe form at the bottom of the page --}}
-            {{#if @labs.subscribers}}
-            <section class="subscribe-form">
-                <h3 class="subscribe-form-title">Subscribe to {{@blog.title}}</h3>
-                <p>Get the latest posts delivered right to your inbox</p>
-                {{subscribe_form placeholder="youremail@example.com"}}
-            </section>
-            {{/if}}
 
             <footer class="post-full-footer">
 
