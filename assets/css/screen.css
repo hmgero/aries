@@ -116,7 +116,7 @@ body {
     color: #fff;
     background: color(var(--darkgrey) l(-5%)) no-repeat center center;
     background-size: cover;
-    min-height: 600px;
+    min-height: 520px;
 }
 
 .site-header:before {
@@ -1464,6 +1464,103 @@ Usage (In Ghost editor):
     opacity: 0.15;
 }
 
+/* 7.2.3 aries author*/
+
+.author{
+    position: relative;
+    width: 100%;
+    margin-top: 5rem;
+    background: #fff;
+}
+
+.author::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    display: block;
+    width: 10px;
+    height: 194px;
+    background: rgba(39,44,49,.15);
+    filter: blur(5px);
+    left: -5px;
+    transform: rotate(-5deg);
+}
+
+
+.author::after{
+    content: "";
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+    display: block;
+    width: 10px;
+    height: 194px;
+    background: rgba(39,44,49,.15);
+    filter: blur(5px);
+    right: -5px;
+    transform: rotate(5deg);
+}
+
+.author-image{
+    position: absolute;
+    z-index: 2;
+    top: -40px;
+    left: 50%;
+    display: block;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+    margin-left: -40px;
+    padding: 6px;
+    border-radius: 100%;
+    background: #fff;
+    box-shadow: #e7eef2 0 0 0 1px;
+}
+
+.author-image .img{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-position: center center;
+    background-size: cover;
+}
+
+.author-detail{
+    padding: 6.6rem 1.6rem 1.6rem;
+    text-align: center;
+}
+
+.author-detail a{
+    font-size: 1.6rem;
+    color: #999;
+}
+
+.author-detail p{
+    font-size: 1.4rem;
+    line-height: 1.75em;
+    margin: 1rem 0;
+    color: #333;
+}
+
+.author-meta{
+    font-size: 1.4rem;
+    line-height: 1;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    word-wrap: break-word;
+}
+
+.author-meta span{
+    margin-right: 1rem;
+    color: #9eabb3;
+}
+
 
 /* 7.3. Comments
 /* ---------------------------------------------------------- */
@@ -1924,12 +2021,14 @@ Usage (In Ghost editor):
 /* ---------------------------------------------------------- */
 .post-nav-container{
     margin: 3vw auto;
+    position: relative;
+    z-index: 100;
 }
 
 .post-nav-container .back-home{
     font-size: 1.2rem;
     line-height: 2.4rem;
-    padding: .5rem 2.5rem;
+    padding: .8rem 2.5rem;
     opacity: .8;
     color: #fff;
     border: 1px solid #fff;
@@ -1938,7 +2037,9 @@ Usage (In Ghost editor):
 }
 
 .post-info-container{
-    margin: 8vw auto;
+    position: relative;
+    bottom: -80px;
+    z-index: 100;
 }
 
 .post-page-title{
@@ -1947,6 +2048,7 @@ Usage (In Ghost editor):
     line-height: 4.8rem;
     text-align: left;
     color: white;
+    margin: 1.5em 0;
 }
 
 .post-page-time{
