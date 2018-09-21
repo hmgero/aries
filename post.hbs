@@ -26,14 +26,31 @@
                     <div class="post-content">
                         {{content}}
                     </div>
-                    <div>
-                        <button data-toggle="popover" data-content="<img src='{{asset "img/alipay.png"}}'>" data-html="true">赏</button>
-                        
+                </section>
+
+                <section class="money-like">
+                    <div class="collapse" id="money-pay">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img class='alipay-img' src='{{asset "img/alipay.png"}}'>
+                                </div>
+                                <div class="col-md-6">
+                                    <img class='wechat-img' src='{{asset "img/wechat.png"}}'>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
-                    <div class="qr-code">
-                        <img src="http://tool.hmgero.com/qrcode?content={{url absolute="true"}}" alt="">
+                    <p>
+                        <button class="reward-button" data-toggle="collapse" href="#money-pay" role="button" aria-expanded="false" aria-controls="money-pay">赏</button>
+                    </p>                    
+                    <p class="money-notice">若你觉得我的文章对你有帮助,欢迎点击上方按钮对我打赏</p>
+                </section>
+
+                <section class="qr-code">
+                    <img src="http://tool.hmgero.com/qrcode?content={{url absolute="true"}}" alt="">
                         <p>扫描二维码,分享此文章</p>
-                    </div>
                 </section>
 
                 <footer class="post-full-footer">
@@ -133,18 +150,14 @@
         </div>
     </aside>
 
-    {{!-- Floating header which appears on-scroll, included from includes/floating-header.hbs --}}
-    {{> floating-header}}
-
     {{/post}}
 
     {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in
     default.hbs --}}
     {{#contentFor "scripts"}}
     <script>
-
-        jQuery(function () {
-  jQuery('[data-toggle="popover"]').popover()
-})
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
     </script>
     {{/contentFor}}

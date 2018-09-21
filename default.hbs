@@ -12,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{!-- Styles'n'Scripts --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "built/bootstrap.min.css"}}" />
     <link rel="stylesheet" type="text/css" href="{{asset "built/aries.css"}}" />
 
     {{!-- This tag outputs SEO meta+structured data and other important settings --}}
@@ -61,15 +60,13 @@
     {{!-- <script src="{{asset "js/infinitescroll.js"}}"></script> --}}
     {{/if}}
 
+    <script src="{{asset "built/all.min.js"}}"></script>
+
     {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
     {{{block "scripts"}}}
 
     {{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
     {{ghost_foot}}
-
-    <script src="{{asset "js/jquery.min.js"}}"></script>
-    <script src="{{asset "js/popper.min.js"}}"></script>
-    <script src="{{asset "js/bootstrap.min.js"}}"></script>
 
 </body>
 </html>
