@@ -54,9 +54,9 @@ gulp.task('css', function () {
 gulp.task('js',function(){
     return gulp.src(['/assets/js/jquery-min.js','/assets/js/bootstrap.min.js','/assets/js/popper.min.js'])  //选择合并的JS
         .pipe(order([
-            '/assets/js/jquery-min.js',
-            '/assets/js/popper.min.js',
-            '/assets/js/bootstrap.min.js',
+            'jquery-min.js',
+            'popper.min.js',
+            'bootstrap.min.js',
         ]))
         .pipe(concat('all.js'))   //合并js
         .pipe(rename({suffix:'.min'}))     //重命名
@@ -68,7 +68,7 @@ gulp.task('watch', function () {
     gulp.watch('assets/css/**', ['css']);
 });
 
-gulp.task('zip', ['css,js'], function () {
+gulp.task('zip', ['css','js'], function () {
     var targetDir = 'dist/';
     var themeName = require('./package.json').name;
     var filename = themeName + '.zip';
