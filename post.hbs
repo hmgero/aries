@@ -2,154 +2,149 @@
     {{!-- The tag above means: insert everything in this file into the {body} of the default.hbs template --}}
     {{!-- Everything inside the #post tags pulls data from the post --}} 
     {{#post}} 
-    <header class="site-header" {{#if feature_image}} style="background-image: url({{feature_image}})" {{else}} style="background-image: url({{asset "img/default.jpg"}})" {{/if}}>
-    <div class="inner">
-        <div class="post-nav-container">
-            <a href="{{@blog.url}}" class="back-home">Home</a>
-        </div>
-        <div class="post-info-container">
-            <h2 class="post-page-title">{{title}}</h2>
-            <time class="post-page-time" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
-            <div class="post-page-tags">
-                {{tags separator=" "}}
-            </div>
-        </div>
-    </div>
-    </header>
+    <main class="single-post">
+        <article>
+            <header class="post-header text-center" {{#if feature_image}} style="background-image: url({{feature_image}})" {{else}}
+                style="background-image: url({{asset "img/default.jpg"}})" {{/if}}>
+                <div class="container info">
+                    {{#if primary_tag}}
+                    <a href="{{url}}" class="category">{{primary_tag.name}}</a>
+                    {{/if}}
+                    <h1 class="title">{{title}}</h1>
+                    <div class="post-meta">
+                        {{#primary_author}}
+                        <a class="author" href="{{url}}">{{name}}</a>
+                        {{/primary_author}}  
+                        <time class="time" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                    </div>    
+                </div>
+            </header>
 
-    <main id="site-main" class="site-main outer">
-        <div class="inner">
+            <section class="post-content">
+                {{content}}
+            </section>
 
-            <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
-
-                <section class="post-full-content">
-                    <div class="post-content">
-                        {{content}}
-                    </div>
-                </section>
-
-                <section class="money-like">
-                    <div class="collapse" id="money-pay">
-                        <div class="card card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class='alipay-img' src='{{asset "img/alipay.png"}}'>
-                                </div>
-                                <div class="col-md-6">
-                                    <img class='wechat-img' src='{{asset "img/wechat.png"}}'>
-                                </div>
+            <section class="reward">
+                <div class="collapse" id="money-pay">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class='alipay-img' src='{{asset "img/alipay.png"}}'>
                             </div>
-                            
+                            <div class="col-md-6">
+                                <img class='wechat-img' src='{{asset "img/wechat.png"}}'>
+                            </div>
                         </div>
+
                     </div>
-                    <p>
-                        <button class="reward-button" data-toggle="collapse" href="#money-pay" role="button" aria-expanded="false" aria-controls="money-pay">赏</button>
-                    </p>                    
-                    <p class="money-notice">若你觉得我的文章对你有帮助,欢迎点击上方按钮对我打赏</p>
-                </section>
+                </div>
+                <p>
+                    <button class="reward-button" data-toggle="collapse" href="#money-pay" role="button" aria-expanded="false"
+                        aria-controls="money-pay">赏</button>
+                </p>
+                <p class="money-notice">若你觉得我的文章对你有帮助,欢迎点击上方按钮对我打赏</p>
+            </section>
 
-                <section class="qr-code">
-                    <img src="http://tool.hmgero.com/qrcode?content={{url absolute="true"}}" alt="">
-                        <p>扫描二维码,分享此文章</p>
-                </section>
+            <section class="qr-code">
+                <img src="http://tool.hmgero.com/qrcode?content={{url absolute="true"}}" alt="">
+                <p>扫描二维码,分享此文章</p>
+            </section>
 
-                <footer class="post-full-footer">
+            <footer class="post-footer">
 
-                    {{!-- There are two options for how we display the byline/author-info.
-                    If the post has more than one author, we load a specific template
-                    from includes/byline-multiple.hbs, otherwise, we just use the
-                    default byline. --}}
+                {{!-- There are two options for how we display the byline/author-info.
+                If the post has more than one author, we load a specific template
+                from includes/byline-multiple.hbs, otherwise, we just use the
+                default byline. --}}
 
-                    {{#author}}
-                    <section class="author">
-                        {{#if profile_image}}
-                        <figure class="author-image">
-                            <a class="img" href="javascript:;" style="background-image: url('{{profile_image}}')"></a>
-                        </figure>
+                {{!-- {{#author}}
+                <section class="author">
+                    {{#if profile_image}}
+                    <figure class="author-image">
+                        <a class="img" href="javascript:;" style="background-image: url('{{profile_image}}')"></a>
+                    </figure>
+                    {{/if}}
+
+                    <section class="author-detail">
+                        <a href="javascript:;">{{name}}</a>
+                        {{#if bio}}
+                        <p>{{bio}}</p>
+                        {{else}}
+                        <p>Read <a href="{{url}}">more posts</a> by this author.</p>
                         {{/if}}
-
-                        <section class="author-detail">
-                            <a href="javascript:;">{{name}}</a>
-                            {{#if bio}}
-                            <p>{{bio}}</p>
-                            {{else}}
-                            <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+                        <div class="author-meta">
+                            {{#if location}}
+                            <span class="author-location">{{location}}</span>
                             {{/if}}
-                            <div class="author-meta">
-                                {{#if location}}
-                                <span class="author-location">{{location}}</span>
-                                {{/if}}
-                                {{#if website}}
-                                <span class="author-link"><a href="{{website}}">{{website}}</a></span>
-                                {{/if}}
-                            </div>
+                            {{#if website}}
+                            <span class="author-link"><a href="{{website}}">{{website}}</a></span>
+                            {{/if}}
+                        </div>
 
-                        </section>
                     </section>
-                    {{/author}}
-
-                </footer>
-
-                {{!--
-                <section class="post-full-comments">
-                    If you want to embed comments, this is a good place to do it!
                 </section>
-                --}}
+                {{/author}} --}}
 
-            </article>
+            </footer>
 
-        </div>
-    </main>
+            {{!--
+            <section class="post-full-comments">
+                If you want to embed comments, this is a good place to do it!
+            </section>
+            --}}
 
-    {{!-- Links to Previous/Next posts --}}
-    <aside class="read-next outer">
-        <div class="inner">
-            <div class="read-next-feed">
-                {{#if primary_tag}}
-                {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
-                {{#if related_posts}}
-                <article class="read-next-card" {{#if ../primary_tag.feature_image}} style="background-image: url({{../primary_tag.feature_image}})"
-                    {{else}} {{#if @blog.cover_image}} style="background-image: url({{@blog.cover_image}})" {{/if}}
-                    {{/if}}>
-                    <header class="read-next-card-header">
-                        <small class="read-next-card-header-sitetitle">&mdash; {{@blog.title}} &mdash;</small>
-                        {{#../primary_tag}}
-                        <h3 class="read-next-card-header-title"><a href="{{url}}">{{name}}</a></h3>
-                        {{/../primary_tag}}
-                    </header>
-                    <div class="read-next-divider">{{> "icons/infinity"}}</div>
-                    <div class="read-next-card-content">
-                        <ul>
-                            {{#foreach related_posts}}
-                            <li><a href="{{url}}">{{title}}</a></li>
-                            {{/foreach}}
-                        </ul>
-                    </div>
-                    <footer class="read-next-card-footer">
-                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total
-                            empty='No posts' singular='% post' plural='See all % posts'}} →</a>
-                    </footer>
-                </article>
-                {{/if}}
-                {{/get}}
-                {{/if}}
+        </article>
+    
 
-                {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs
-                --}}
-                {{#next_post}}
-                {{> "post-card"}}
-                {{/next_post}}
+        {{!-- Links to Previous/Next posts --}}
+        <aside class="read-next outer">
+            <div class="inner">
+                <div class="read-next-feed">
+                    {{#if primary_tag}}
+                    {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
+                    {{#if related_posts}}
+                    <article class="read-next-card" {{#if ../primary_tag.feature_image}} style="background-image: url({{../primary_tag.feature_image}})"
+                        {{else}} {{#if @blog.cover_image}} style="background-image: url({{@blog.cover_image}})" {{/if}}
+                        {{/if}}>
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; {{@blog.title}} &mdash;</small>
+                            {{#../primary_tag}}
+                            <h3 class="read-next-card-header-title"><a href="{{url}}">{{name}}</a></h3>
+                            {{/../primary_tag}}
+                        </header>
+                        <div class="read-next-divider">{{> "icons/infinity"}}</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                {{#foreach related_posts}}
+                                <li><a href="{{url}}">{{title}}</a></li>
+                                {{/foreach}}
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total
+                                empty='No posts' singular='% post' plural='See all % posts'}} →</a>
+                        </footer>
+                    </article>
+                    {{/if}}
+                    {{/get}}
+                    {{/if}}
 
-                {{!-- If there's a previous post, display it using the same markup included from -
-                partials/post-card.hbs --}}
-                {{#prev_post}}
-                {{> "post-card"}}
-                {{/prev_post}}
+                    {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs
+                    --}}
+                    {{#next_post}}
+                    {{> "post-card"}}
+                    {{/next_post}}
 
+                    {{!-- If there's a previous post, display it using the same markup included from -
+                    partials/post-card.hbs --}}
+                    {{#prev_post}}
+                    {{> "post-card"}}
+                    {{/prev_post}}
+
+                </div>
             </div>
-        </div>
-    </aside>
-
+        </aside>
+    </main>
     {{/post}}
 
     {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in

@@ -115,7 +115,6 @@ body {
     color: #fff;
     background: color(var(--darkgrey) l(-5%)) no-repeat center center;
     background-size: cover;
-    min-height: 520px;
 }
 
 .site-header:before {
