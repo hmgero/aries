@@ -25,13 +25,16 @@
 /* 1. Global - Set up the things
 /* ---------------------------------------------------------- */
 
+html{
+    font-size: 10px;
+}
+
 a:hover,
 a:focus {
     color: color(var(--blue));
     text-decoration: none;
     outline: none;
 }
-
 
 
 
@@ -64,7 +67,7 @@ a:focus {
 }
 
 
-/* 4. Site Header
+/* 3. Site Header
 /* ---------------------------------------------------------- */
 
 .site-header {
@@ -150,10 +153,8 @@ a:focus {
 }
 
 
-
-
-
-/* Post Card*/
+/* 4. Post Card
+/* ---------------------------------------------------------- */
 
 .post-card {
     display: flex;
@@ -212,8 +213,8 @@ a:focus {
 .post-card-title {
     margin-top: 12px;
     margin-bottom: 0;
-    font-size: 1.2rem;
-    line-height: 2.2rem;
+    font-size: 1.8rem;
+    line-height: 2.8rem;
 }
 
 .post-card .post-card-header .post-card-title-link {
@@ -281,8 +282,8 @@ a:focus {
 }
 
 
-
-/* Single Post*/
+/* 5. Single Post
+/* ---------------------------------------------------------- */
 
 .single-post {
     padding-top: 0px;
@@ -579,14 +580,13 @@ a:focus {
 }
 
 
-
-/* 11. Site Footer
+/* 6. Site Footer
 /* ---------------------------------------------------------- */
 
 .site-footer {
     position: relative;
-    padding-top: 20px;
-    padding-bottom: 60px;
+    padding-top: 32px;
+    padding-bottom: 32px;
     color: #fff;
     background: color(var(--darkgrey) l(-15%));
 }
