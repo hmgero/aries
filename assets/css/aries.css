@@ -25,8 +25,9 @@
 /* 1. Global - Set up the things
 /* ---------------------------------------------------------- */
 
-html{
+html,body {
     font-size: 10px;
+    font-family: Exo,'-apple-system','Open Sans',HelveticaNeue-Light,'Helvetica Neue Light','Helvetica Neue','Hiragino Sans GB','Microsoft YaHei',Helvetica,Arial,sans-serif;
 }
 
 a:hover,
@@ -66,11 +67,46 @@ a:focus {
     width: 100%;
 }
 
-
 /* 3. Site Header
+/* ----------------------------------------------------------- */
+
+.site-header{
+    background: #ffffff;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.site-header .navbar{
+    background-color: #ffffff;
+    width: 100%;
+    padding: 0px;
+}
+
+.navbar .navbar-collapse ul li.nav-item{
+    list-style: none;
+    float: left;
+    font-size: 1.4rem;
+    margin: 0px 20px;
+    padding: 12px 0;
+}
+
+.navbar .navbar-collapse ul li.nav-item a{
+    color: #999999;
+    padding: 5px 0 3px;
+    display: block;
+    line-height: 2.4rem;
+}
+
+.navbar .navbar-collapse ul li.nav-current a{
+    color: #222222;
+}
+
+
+/* 4. Cover
 /* ---------------------------------------------------------- */
 
-.site-header {
+.cover {
     position: relative;
     padding-top: 12px;
     padding-bottom: 12px;
@@ -79,7 +115,7 @@ a:focus {
     background-size: cover;
 }
 
-.site-header:before {
+.cover:before {
     content: "";
     position: absolute;
     top: 0;
@@ -91,7 +127,7 @@ a:focus {
     background: rgba(0, 0, 0, 0.18);
 }
 
-.site-header:after {
+.cover:after {
     content: "";
     position: absolute;
     top: 0;
@@ -104,12 +140,7 @@ a:focus {
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
 }
 
-.site-header.no-cover:before,
-.site-header.no-cover:after {
-    display: none;
-}
-
-.site-header-content {
+.cover-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -153,7 +184,7 @@ a:focus {
 }
 
 
-/* 4. Post Card
+/* 5. Post Card
 /* ---------------------------------------------------------- */
 
 .post-card {
@@ -282,7 +313,7 @@ a:focus {
 }
 
 
-/* 5. Single Post
+/* 6. Single Post
 /* ---------------------------------------------------------- */
 
 .single-post {
@@ -352,6 +383,7 @@ a:focus {
     color: #ffffff;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     margin: 32px 0px;
+    font-size: 4.5rem;
 }
 
 .single-post .post-header .page-title {
@@ -407,8 +439,31 @@ a:focus {
 .single-post .post-content {
     max-width: 800px;
     margin: 0 auto;
-    font-size: 18px;
+    font-size: 1.6rem;
     line-height: 3.6rem;
+}
+
+.single-post .post-content p {
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+    margin-top: 2.2rem;
+    color: #333333;
+}
+
+.single-post .post-content blockquote {
+    border-left: 2px solid color(var(--blue));
+    color: #999999;
+    font-size: 1.8rem;
+    line-height: 3rem;
+    font-weight: 300;
+    font-style: italic;
+    padding: 0px 20px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.single-post .post-content blockquote p{
+    color: #999999;
 }
 
 .single-post .post-content img {
@@ -474,7 +529,6 @@ a:focus {
     padding: 0;
     -webkit-user-select: none;
     text-align: center;
-    vertical-align: middle;
     color: #fff;
     border: 1px solid #f1b60e;
     border-radius: 50%;
@@ -574,13 +628,13 @@ a:focus {
     margin-right: 8px;
 }
 
-.single-post .read-next{
+.single-post .read-next {
     max-width: 800px;
     margin: 0 auto;
 }
 
 
-/* 6. Site Footer
+/* 7. Site Footer
 /* ---------------------------------------------------------- */
 
 .site-footer {
