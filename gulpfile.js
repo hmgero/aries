@@ -44,6 +44,7 @@ gulp.task('css', function () {
     return gulp.src('assets/css/*.css')
         .on('error', swallowError)
         .pipe(sourcemaps.init())
+        .pipe(concat('all.css'))   //合并css
         .pipe(postcss(processors))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('assets/built/'))
@@ -52,16 +53,17 @@ gulp.task('css', function () {
 
 //JS处理
 gulp.task('js',function(){
-    return gulp.src(['/assets/js/jquery-min.js','/assets/js/bootstrap.min.js','/assets/js/popper.min.js'])  //选择合并的JS
+    return gulp.src(['assets/js/jquery.min.js','assets/js/bootstrap.min.js','assets/js/popper.min.js','assets/js/prism.js'])  //选择合并的JS
         .pipe(order([
-            'jquery-min.js',
+            'jquery.min.js',
             'popper.min.js',
             'bootstrap.min.js',
+            'prism.js',
         ]))
         .pipe(concat('all.js'))   //合并js
         .pipe(rename({suffix:'.min'}))     //重命名
         //.pipe(uglify())                    //压缩
-        .pipe(gulp.dest('assets/built'))            //输出 
+        .pipe(gulp.dest('assets/built/'))            //输出 
  });
 
 gulp.task('watch', function () {

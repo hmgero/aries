@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{!-- Styles'n'Scripts --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "built/aries.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "built/all.css"}}" />
 
     {{!-- This tag outputs SEO meta+structured data and other important settings --}}
     {{ghost_head}}
@@ -69,6 +69,7 @@
     {{/if}}
 
     <script src="{{asset "built/all.min.js"}}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
     {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}
     {{{block "scripts"}}}
