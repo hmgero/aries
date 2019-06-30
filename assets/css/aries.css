@@ -27,7 +27,7 @@
 
 html,body {
     font-size: 10px;
-    font-family: Exo,'-apple-system','Open Sans',HelveticaNeue-Light,'Helvetica Neue Light','Helvetica Neue','Hiragino Sans GB','Microsoft YaHei',Helvetica,Arial,sans-serif;
+    font-family: Exo,'-apple-system','Open Sans',HelveticaNeue-Light,'Helvetica Neue Light','Helvetica Neue','Hiragino Sans GB','Microsoft YaHei',Helvetica,Arial,sans-serif !important;
 }
 
 a:hover,
@@ -440,13 +440,13 @@ a:focus {
     max-width: 800px;
     margin: 0 auto;
     font-size: 1.6rem;
-    line-height: 3.6rem;
+    line-height: 2.8rem;
 }
 
 .single-post .post-content p {
     font-size: 1.6rem;
     line-height: 2.8rem;
-    margin-top: 2.2rem;
+    margin-top: 2.0rem;
     color: #333333;
 }
 

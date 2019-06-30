@@ -46,6 +46,7 @@ gulp.task('css', function () {
         .pipe(sourcemaps.init())
         .pipe(concat('all.css'))   //合并css
         .pipe(postcss(processors))
+        .pipe(rename({suffix:'.min'}))     //重命名
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('assets/built/'))
         .pipe(livereload());
@@ -53,7 +54,7 @@ gulp.task('css', function () {
 
 //JS处理
 gulp.task('js',function(){
-    return gulp.src(['assets/js/jquery.min.js','assets/js/bootstrap.min.js','assets/js/popper.min.js','assets/js/prism.js'])  //选择合并的JS
+    return gulp.src(['assets/js/jquery.min.js','assets/js/bootstrap.min.js','assets/js/popper.min.js','assets/js/highlight.pack.js'])  //选择合并的JS
         .pipe(order([
             'jquery.min.js',
             'popper.min.js',
